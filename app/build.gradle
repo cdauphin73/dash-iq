@@ -1,0 +1,14 @@
+plugins {
+    id 'com.android.application'
+}
+android {
+    namespace 'com.dashiq.fantrivia'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'com.dashiq.fantrivia'
+        minSdk 26
+        targetSdk 36
+        versionCode 3
+        versionName '2.1-truck'
+    }
+}
