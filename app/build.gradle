@@ -8,7 +8,7 @@ android {
         applicationId 'com.dashiq.fantrivia'
         minSdk 26
         targetSdk 36
-        versionCode 3
-        versionName '2.1-truck'
+        versionCode 4
+        versionName '2.2-truck'
     }
 }
