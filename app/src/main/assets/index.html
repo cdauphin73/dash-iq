@@ -53,6 +53,43 @@
   .game-running .feedbackText strong{font-size:10px}
   .game-running .next{font-size:10px;min-height:23px;height:23px;padding:3px 9px;border-radius:5px}
 }
+
+/* Dash IQ v2.3: Android Auto keeps a navigation strip OVER the lower WebView.
+   Reserve that strip explicitly. Use two-column quiz layout at landscape sizes.
+   Allow page scrolling rather than clipping controls if a head unit has less space. */
+@media (orientation:landscape) and (max-height:600px){
+  body.game-running{--truck-bar:clamp(48px,18dvh,95px);height:auto!important;min-height:100dvh;overflow-y:auto!important;overflow-x:hidden}
+  .game-running .wrap{height:calc(100dvh - var(--truck-bar))!important;min-height:202px!important;overflow:visible!important;gap:3px!important;padding:3px 7px 4px!important}
+  .game-running header{height:25px!important;min-height:25px!important;flex:0 0 25px!important;gap:5px}
+  .game-running .brand{gap:5px}
+  .game-running .cube{width:21px;height:21px;border-width:2px}
+  .game-running .cube:before,.game-running .cube:after{width:4px;height:4px;top:5px}
+  .game-running .cube:before{left:4px}.game-running .cube:after{right:4px}
+  .game-running .cube .mouth{width:9px;height:2px;bottom:3px;left:4px}
+  .game-running .brandtitle{font-size:17px}
+  .game-running .subtitle,.game-running .headright .pill,.game-running footer{display:none!important}
+  .game-running .mini{padding:3px 7px;font-size:10px;border-radius:5px}
+  .game-running #game.active{flex:1;min-height:0;overflow:visible!important;gap:3px}
+  .game-running .status{height:18px!important;min-height:18px!important;flex:0 0 18px!important;flex-wrap:nowrap;gap:5px}
+  .game-running .status .level{font-size:9px;white-space:nowrap;letter-spacing:0}
+  .game-running .progress{height:5px;min-width:12px}
+  .game-running .scorechip{padding:2px 4px;font-size:9px;border-radius:4px}
+  .game-running .gamecard{flex:1;min-height:0!important;display:grid!important;grid-template-columns:minmax(0,42%) minmax(0,58%)!important;grid-template-rows:minmax(0,1fr)!important;overflow:visible!important;border-radius:8px}
+  .game-running .prompt{position:relative;display:flex!important;flex-direction:column;justify-content:center;align-items:flex-start;gap:0;min-height:0;padding:5px 7px;border-right:1px solid #414761;border-bottom:0;overflow:visible!important}
+  .game-running .tag{margin:0 0 3px;padding:2px 4px;font-size:8px;line-height:11px;border-radius:3px}
+  .game-running .qnum{font-size:8px;letter-spacing:0;line-height:1.1;white-space:normal;overflow:visible}
+  .game-running .prompt h2{display:block;min-height:0;max-height:none;flex:0 1 auto;margin:5px 0 3px;font-size:clamp(11px,3.2dvh,18px);line-height:1.1;letter-spacing:0;overflow:visible!important;align-self:auto;overflow-wrap:break-word}
+  .game-running .turn{position:static;font-size:9px;line-height:1.1}
+  .game-running .answerside{min-width:0;min-height:0;display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:minmax(0,1fr) 25px!important;gap:3px;padding:4px 5px}
+  .game-running .answers{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;grid-template-rows:repeat(2,minmax(0,1fr))!important;gap:4px}
+  .game-running .answer{min-width:0;height:100%;min-height:0;padding:3px 4px;border-radius:5px;gap:4px;font-size:clamp(10px,2.2vw,14px);line-height:1.1;overflow:visible!important}
+  .game-running .answer .letter{flex:0 0 17px;height:17px;border-radius:3px;font-size:9px}
+  .game-running .answer span:last-child{overflow:visible!important;display:block!important;-webkit-line-clamp:unset!important;overflow-wrap:anywhere}
+  .game-running .feedback{height:25px;min-height:25px;overflow:visible;gap:4px}
+  .game-running .feedbackText{font-size:10px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1}
+  .game-running .feedbackText strong{font-size:10px}
+  .game-running .next{font-size:10px;min-height:24px;height:24px;padding:3px 8px;border-radius:5px}
+}
 </style>
 </head>
 <body>
@@ -81,7 +118,7 @@
     <div class="answerside"><div class="answers" id="answers"></div><div class="feedback"><div class="feedbackText" id="feedback" role="status" aria-live="polite">Choose the right answer.</div><button class="next" id="next" hidden>NEXT ▶</button></div></div></div>
   </section>
   <section class="screen card result" id="results"><div class="resultContent"><div class="resulticon" id="resultIcon">◆</div><div class="eyebrow">ROUND COMPLETE</div><h2 id="resultTitle">NICE DASH!</h2><div class="resultScore" id="finalScore"></div><p id="resultCopy"></p><div class="resultButtons"><button class="start" id="replay">PLAY AGAIN ↻</button><button class="start ghost" id="change">CHANGE SETTINGS</button></div></div></section>
-  <footer><span>UNOFFICIAL FAN-MADE TRIVIA · NOT AFFILIATED WITH ROBTOP GAMES</span><span>v2.2 · NO ADS · OFFLINE</span></footer>
+  <footer><span>UNOFFICIAL FAN-MADE TRIVIA · NOT AFFILIATED WITH ROBTOP GAMES</span><span>v2.3 · NO ADS · OFFLINE</span></footer>
 </div>
 <script>
 'use strict';
